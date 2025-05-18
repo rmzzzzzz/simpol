@@ -36,4 +36,11 @@ class userController extends Controller
         user::create($request->all());
         return redirect('/admin/data/userdata')->with('success', 'Berhasil Di Tambah');
     }
+       public function edit($id)
+    {
+        $data = ['detail' => userModel::findOrfail($id)];
+
+        return view("admin/edit/user", $data);
+}
+
 }

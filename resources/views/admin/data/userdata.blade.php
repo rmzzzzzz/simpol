@@ -70,7 +70,7 @@
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                           <a href="{{ $item->id }}/edit"> <x-secondary-button>edit</x-secondary-button></a>
+                                           <a href="/admin/edit/{{ $item->id }}/user"> <x-secondary-button>edit</x-secondary-button></a>
                                            <a href="{{ $item->id }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
                                         </td>
                                     </tr>

@@ -18,8 +18,10 @@ Route::get('admin/dashboard', function () {
 })->name('dashboard');
 route::get('admin/data/userdata', [userController::class, 'userdata']);
 route::get('admin/add/user', [userController::class, 'user']);
-route::get('admin/add/user', [userController::class, 'tambah'])->name('user');
-route::post('admin/add/user', [userController::class, 'action_tambah']);
+route::get('admin/add/user', [userController::class, 'tambah']);
+route::post('admin/add/user', [userController::class, 'action_tambah'])->name('add.user');
+route::get('admin/edit/{id}/user', [userController::class, 'edit']);
+ Route::patch('admin/edit/user', [ProfileController::class, 'update'])->name('edit');
 
 route::get('admin/data/kategori', [kategoriController::class, 'kategori']);
 
