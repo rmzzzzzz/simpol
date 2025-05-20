@@ -2,7 +2,7 @@
 @extends('layouts.navigation')
 @section('content')
     {{-- <x-guest-layout> --}}
-    <form method="POST" action="{{ route('edit') }}">
+    <form method="POST" action="/admin/edit/{{ $detail->id }}/user">
         @csrf
 
         <!-- Name -->
@@ -26,8 +26,7 @@
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            :value="old('email',$detail->password)"
-                            required autocomplete="new-password" />
+                             />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -38,8 +37,7 @@
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            :value="old('email',$detail->password)"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation"  />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>

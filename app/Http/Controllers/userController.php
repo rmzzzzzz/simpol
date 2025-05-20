@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use App\Models\userModel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
 
 class userController extends Controller
@@ -42,5 +45,34 @@ class userController extends Controller
 
         return view("admin/edit/user", $data);
 }
+ 
+public function action_edit(Request $request, $id)
+{
+    $user = User::findOrFail($id);
+
+    $validatedData = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id],
+        // 'role' => ['required', 'in:admin,petugas,anggota'],
+        'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+    ]);
+
+    if (!empty($validatedData['password'])) {
+        $validatedData['password'] = Hash::make($validatedData['password']);
+    } else {
+        unset($validatedData['password']);
+    }
+
+    $user->update($validatedData); // pastikan $fillable benar di model User
+
+    return redirect('/admin/data/userdata')->with('success', 'Data Berhasil Diperbarui');
+}
+
+ public function hapus($id)
+    {
+        $user = user::findOrfail($id);
+        $user->delete();
+        return back()->with('succes', 'data user berhasil dihapus');
+    }
 
 }

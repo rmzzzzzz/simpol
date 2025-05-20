@@ -21,7 +21,8 @@ route::get('admin/add/user', [userController::class, 'user']);
 route::get('admin/add/user', [userController::class, 'tambah']);
 route::post('admin/add/user', [userController::class, 'action_tambah'])->name('add.user');
 route::get('admin/edit/{id}/user', [userController::class, 'edit']);
- Route::patch('admin/edit/user', [ProfileController::class, 'update'])->name('edit');
+Route::post('admin/edit/{id}/user', [userController::class, 'action_edit']);
+Route::get('admin/data/{id}/hapus', [userController::class, 'hapus']);
 
 route::get('admin/data/kategori', [kategoriController::class, 'kategori']);
 
