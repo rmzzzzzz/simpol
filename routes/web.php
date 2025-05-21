@@ -15,7 +15,7 @@ Route::middleware('auth', 'verified')->group(function () {
 // route admin
 Route::get('admin/dashboard', function () {
     return view('admin/dashboard');
-})->name('dashboard');
+})->name('admin.dashboard');
 route::get('admin/data/userdata', [userController::class, 'userdata']);
 route::get('admin/add/user', [userController::class, 'user']);
 route::get('admin/add/user', [userController::class, 'tambah']);
@@ -33,12 +33,12 @@ route::get('admin/data/produk', [produkController::class, 'produk']);
 // route anggota
 Route::get('anggota/dashboard', function () {
     return view('anggota/dashboard');
-})->name('dashboard');
+})->name('anggota.dashboard');
 
 // route petugas
 Route::get('petugas/dashboard', function () {
     return view('petugas/dashboard');
-})->name('dashboard');
+})->name('petugas.dashboard');
 });
 
 Route::middleware('auth')->group(function () {
