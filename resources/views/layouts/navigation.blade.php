@@ -52,7 +52,23 @@
                 <span class="hide-menu ms-2 ps-1">Dashboard</span>
               </a>
             </li> 
-               <li class="nav-small-cap">
+           <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
+              <span class="hide-menu">Pesanan</span>
+            </li>
+            <li class="sidebar-item">
+              <a
+                class="sidebar-link sidebar-link warning-hover-bg"
+                href='/admin/data/pesanan'
+                aria-expanded="false"
+              >
+                <span class="aside-icon p-2 bg-light-warning rounded-3">
+                  <i class="ti ti-article fs-7 text-warning"></i>
+                </span>
+                <span class="hide-menu ms-2 ps-1">Pesanan</span>
+              </a>
+            </li>
+           <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
               <span class="hide-menu">UI Componenst</span>
             </li>

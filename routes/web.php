@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\kategoriController;
+use App\Http\Controllers\pesananController;
 use App\Http\Controllers\produkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\userController;
@@ -27,6 +28,8 @@ Route::get('admin/data/{id}/hapus', [userController::class, 'hapus']);
 route::get('admin/data/kategori', [kategoriController::class, 'kategori']);
 
 route::get('admin/data/produk', [produkController::class, 'produk']);
+
+route::get('admin/data/pesanan', [pesananController::class, 'pesanan']);
 
 
 //  Route::get('/add/user')->name('add.user');
