@@ -9,7 +9,48 @@ class kategoriController extends Controller
 {
     public function kategori()
     {
-        $data['user'] = kategoriModel::get();
+        $data['kategori'] = kategoriModel::get();
         return view('admin/data/kategori', $data);
     }
+     public function tambah()
+    {
+        $data = [
+            'nama_kategori' => kategoriModel::all(),
+        ];
+        return view('admin/add/kategori', $data);
+    }
+     public function action_tambah(Request $request){
+     $request->validate([
+            'nama_kategori' => ['required', 'string', 'max:255']
+        ]);
+
+        kategoriModel::create($request->all());
+        return redirect('/admin/data/kategori')->with('success', 'Berhasil Di Tambah');
+    }
+
+      public function edit($id)
+    {
+        $data = ['detail' => kategoriModel::findOrfail($id)];
+
+        return view("admin/edit/kategori", $data);
+}
+ 
+public function action_edit(Request $request, $id)
+{
+    $kategori = kategoriModel::findOrFail($id);
+
+    $validatedData = $request->validate([
+        'nama_kategori' => ['required', 'string', 'max:255']
+    ]);
+    $kategori->update($validatedData); // pastikan $fillable benar di model kategori
+
+    return redirect('/admin/data/kategori')->with('success', 'Data Berhasil Diperbarui');
+}
+public function hapus($id)
+    {
+        $user = kategoriModel::findOrfail($id);
+        $user->delete();
+        return back()->with('succes', 'data user berhasil dihapus');
+    }
+
 }

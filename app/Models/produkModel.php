@@ -9,6 +9,7 @@ class produkModel extends Model
 {
    use HasFactory;
     protected $table = 'produk';
+     protected $primaryKey = 'id_barang';
     protected $guarded = [];
 
      public function kategori()

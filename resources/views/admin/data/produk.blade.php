@@ -11,7 +11,7 @@
                                 <h6>Produk table</h6>
                               </div>
                               <div>
-                                 <a href="/admin/add/user"><x-primary-button >tambah</x-primary-button ></a>
+                                 <a href="/admin/add/produk"><x-primary-button >tambah</x-primary-button ></a>
                               </div>
                             </div>
                           </div>
@@ -61,8 +61,8 @@
                                         </td>
 
                                         <td class="align-middle text-center text-sm">
-                                           <a href="{{ $item->id }}/edit"> <x-secondary-button>edit</x-secondary-button></a>
-                                           <a href="{{ $item->id }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
+                                           <a href="/admin/edit/{{ $item->id_barang }}/produk"> <x-secondary-button>edit</x-secondary-button></a>
+                                           <a href="/admin/data/{{ $item->id_barang }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
                                         </td>
                                     </tr>
                                         @endforeach

@@ -13,7 +13,7 @@ return new class extends Migration
     {
        Schema::create('produk', function (Blueprint $table) {
     $table->id('id_barang');
-    $table->unsignedBigInteger('kategori_id')->unique()->constrained('categori');
+    $table->unsignedBigInteger('kategori_id');
     $table->string('nama_produk');
     $table->bigInteger('harga');
     $table->timestamps();
