@@ -23,21 +23,21 @@ route::get('admin/add/user', [userController::class, 'tambah']);
 route::post('admin/add/user', [userController::class, 'action_tambah'])->name('add.user');
 route::get('admin/edit/{idi}/user', [userController::class, 'edit']);
 Route::post('admin/edit/{id}/user', [userController::class, 'action_edit']);
-Route::get('admin/data/{id}/hapus', [userController::class, 'hapus']);
+Route::get('admin/data/userdata/{id}/hapus', [userController::class, 'hapus']);
 
 route::get('admin/data/kategori', [kategoriController::class, 'kategori']);
 route::get('admin/add/kategori', [kategoriController::class, 'tambah']);
 route::post('admin/add/kategori', [kategoriController::class, 'action_tambah'])->name('add.kategori');
 route::get('admin/edit/{id}/kategori', [kategoriController::class, 'edit']);
 Route::post('admin/edit/{id}/kategori', [kategoriController::class, 'action_edit']);
-Route::get('admin/data/{id}/hapus', [kategoriController::class, 'hapus']);
+Route::get('admin/data/kategori/{id}/hapus', [kategoriController::class, 'hapus']);
 
 route::get('admin/data/produk', [produkController::class, 'produk']);
 route::get('admin/add/produk', [produkController::class, 'tambah']);
 route::post('admin/add/produk', [produkController::class, 'action_tambah'])->name('add.produk');
 route::get('admin/edit/{id}/produk', [produkController::class, 'edit']);
 Route::post('admin/edit/{id}/produk', [produkController::class, 'action_edit']);
-Route::get('admin/data/{id}/hapus', [produkController::class, 'hapus']);
+Route::get('admin/data/produk/{id}/hapus', [produkController::class, 'hapus']);
 
 route::get('admin/data/pesanan', [pesananController::class, 'pesanan']);
 

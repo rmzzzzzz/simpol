@@ -62,7 +62,7 @@
 
                                         <td class="align-middle text-center text-sm">
                                            <a href="/admin/edit/{{ $item->id_barang }}/produk"> <x-secondary-button>edit</x-secondary-button></a>
-                                           <a href="/admin/data/{{ $item->id_barang }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
+                                           <a href="/admin/data/produk/{{ $item->id_barang }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
                                         </td>
                                     </tr>
                                         @endforeach
