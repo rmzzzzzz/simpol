@@ -158,13 +158,13 @@
             <li class="sidebar-item">
               <a
               class="sidebar-link sidebar-link primary-hover-bg"
-              href="./sample-page.html"
+              href="/anggota/riwayatpesanan"
               aria-expanded="false"
               >
               <span class="aside-icon p-2 bg-light-primary rounded-3">
-                <i class="ti ti-aperture fs-7 text-primary"></i>
+                <i class="ti ti-history fs-7 text-primary"></i>
               </span>
-              <span class="hide-menu ms-2 ps-1">Sample Page</span>
+              <span class="hide-menu ms-2 ps-1">Riwayat Pesanan</span>
             </a>
           </li>
         <li class="nav-small-cap">
