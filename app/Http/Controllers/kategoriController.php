@@ -50,7 +50,7 @@ public function hapus($id)
     {
         $user = kategoriModel::findOrfail($id);
         $user->delete();
-        return back()->with('succes', 'data user berhasil dihapus');
+        return back()->with('success', 'data user berhasil dihapus');
     }
 
 }

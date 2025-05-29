@@ -56,7 +56,7 @@ public function hapus($id)
     {
         $user = produkModel::findOrfail($id);
         $user->delete();
-        return back()->with('succes', 'data user berhasil dihapus');
+        return back()->with('success', 'data user berhasil dihapus');
     }
 
 }

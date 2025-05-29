@@ -72,7 +72,7 @@ public function action_edit(Request $request, $id)
     {
         $user = user::findOrfail($id);
         $user->delete();
-        return back()->with('succes', 'data user berhasil dihapus');
+        return back()->with('success', 'data user berhasil dihapus');
     }
 
 }
