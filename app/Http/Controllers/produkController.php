@@ -59,4 +59,12 @@ public function hapus($id)
         return back()->with('success', 'data user berhasil dihapus');
     }
 
+    public function anggotaDashboard()
+{
+    $produk = produkModel::with('kategori')->get()->groupBy(function ($item) {
+        return strtolower($item->kategori->nama_kategori); // pastikan kolom ini sesuai
+    });
+
+    return view('anggota.dashboard', compact('produk'));
+}
 }
