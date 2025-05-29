@@ -22,7 +22,7 @@ public function bayar($id)
         $data =['detail'=> DB::table('setoran')
     ->rightJoin('pesanan', 'pesanan.id_pesanan', '=', 'setoran.pesanan_id')
     ->select('setoran.*', 'pesanan.*')
-    ->where('setoran.id_setoran', $id)
+    ->where('setoran.pesanan_id', $id)
     ->get()];
 
 
