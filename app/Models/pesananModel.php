@@ -9,6 +9,7 @@ class pesananModel extends Model
 {
     use HasFactory;
     protected $table = 'pesanan';
+    protected $primaryKey = 'id_pesanan';
     protected $guarded = [];
 
      public function detail_anggota()
@@ -20,4 +21,10 @@ class pesananModel extends Model
     {
         return $this->belongsTo(produkModel::class, 'produk_id', 'id_barang');
     }
+    public function setoran()
+{
+    return $this->hasMany(setoranModel::class, 'pesanan_id', 'id_pesanan'); 
+    // Sesuaikan nama primary key pesanan di model pesananModel
+}
+
 }

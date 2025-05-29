@@ -4,7 +4,9 @@ use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\pesananController;
 use App\Http\Controllers\produkController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\setoranController;
 use App\Http\Controllers\userController;
+use App\Models\setoranModel;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function(){
@@ -16,7 +18,7 @@ Route::middleware('auth', 'verified')->group(function () {
 // route admin
 Route::get('admin/dashboard', function () {
     return view('admin/dashboard');
-})->name('admin.dashboard');
+})->name('admin/dashboard');
 route::get('admin/data/userdata', [userController::class, 'userdata']);
 // route::get('admin/add/user', [userController::class, 'user']);
 route::get('admin/add/user', [userController::class, 'tambah']);
@@ -45,13 +47,27 @@ route::get('admin/data/pesanan', [pesananController::class, 'pesanan']);
 //  Route::get('/add/user')->name('add.user');
 // route anggota
 Route::get('anggota/dashboard', function () {
-    return view('anggota/dashboard');
-})->name('anggota.dashboard');
+    return view('/anggota/dashboard');
+})->name('dashboard');
+
+// Route::get('anggota/pesanan/pesanan', function () {
+//     return view('anggota/pesanan/pesanan');
+// });
+route::get('anggota/pesanan/{id}/pesanan', [pesananController::class, 'pesan']);
+route::post('anggota/pesanan/pesanan', [pesananController::class, 'action_pesan'])->name('pesan_sekarang');
+// route::get('anggota/setoran/bayar', [pesananController::class, 'setoran']);
+// Route::get('anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
+Route::get('/anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
+Route::get('/anggota/pesanan/riwayat/{id}', [setoranController::class, 'riwayat']);
+Route::get('/anggota/setoran/riwayat/{setoran}', [setoranController::class, 'sukses'])->name('setoran-sukses');
+
+Route::get('/anggota/setoran/riwayat/{id}', [setoranController::class, 'riwayat']);
 
 // route petugas
 Route::get('petugas/dashboard', function () {
     return view('petugas/dashboard');
-})->name('petugas.dashboard');
+})->name('petugas/dashboard');
+
 });
 
 Route::middleware('auth')->group(function () {
@@ -65,3 +81,5 @@ Route::middleware('auth')->group(function () {
 // })->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
+
+

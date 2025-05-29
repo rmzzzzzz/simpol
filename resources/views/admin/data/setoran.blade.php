@@ -1,10 +1,5 @@
 @extends('layouts.navigation')
 @section('content')
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -13,10 +8,10 @@
                         <div class="container">
                             <div class="d-flex mb-4 justify-content-between align-items-center">
                               <div>
-                                <h6>User table</h6>
+                                <h6>Data setoran</h6>
                               </div>
                               <div>
-                                 <a href="/admin/add/user"><x-primary-button >tambah</x-primary-button ></a>
+                                 <a href="/admin/data/setoran"><x-primary-button >tambah</x-primary-button ></a>
                               </div>
                             </div>
                           </div>
@@ -33,10 +28,7 @@
                                             nama</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            email</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            role</th>
+                                            kategori</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             aksi</th>
@@ -56,27 +48,21 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $item->name }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $item->nama_produk }}</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $item->email }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $item->kategori->nama_kategori }}</h6>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $item->role }}</h6>
-                                                </div>
-                                            </div>
-                                        </td>
+
                                         <td class="align-middle text-center text-sm">
-                                           <a href="/admin/edit/{{ $item->id }}/user"> <x-secondary-button>edit</x-secondary-button></a>
-                                           <a href="/admin/data/userdata/{{ $item->id }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
+                                           <a href="/admin/edit/{{ $item->id_barang }}/produk"> <x-secondary-button>edit</x-secondary-button></a>
+                                           <a href="/admin/data/produk/{{ $item->id_barang }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
                                         </td>
                                     </tr>
                                         @endforeach

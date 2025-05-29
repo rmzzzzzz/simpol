@@ -131,7 +131,7 @@
            
               <a
                 class="sidebar-link sidebar-link indigo-hover-bg"
-                href="/anggota/dashbord"
+                href="/anggota/dashboard"
                 aria-expanded="false"
               >
                 <span class="aside-icon p-2 bg-light-indigo rounded-3">
