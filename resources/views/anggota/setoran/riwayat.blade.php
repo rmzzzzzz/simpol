@@ -10,9 +10,6 @@
                               <div>
                                 <h6>Data setoran</h6>
                               </div>
-                              <div>
-                                 <a href="/admin/data/setoran"><x-primary-button >tambah</x-primary-button ></a>
-                              </div>
                             </div>
                           </div>
                     </div>

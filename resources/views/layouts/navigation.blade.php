@@ -146,13 +146,13 @@
               <li class="sidebar-item">
                 <a
                 class="sidebar-link sidebar-link success-hover-bg"
-                href="./icon-tabler.html"
+                href="/anggota/pesanan/riwayat"
                 aria-expanded="false"
                 >
                 <span class="aside-icon p-2 bg-light-success rounded-3">
                   <i class="ti ti-mood-happy fs-7 text-success"></i>
                 </span>
-                <span class="hide-menu ms-2 ps-1">Icons</span>
+                <span class="hide-menu ms-2 ps-1">riwayat</span>
               </a>
             </li>
             <li class="sidebar-item">

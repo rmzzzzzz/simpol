@@ -55,13 +55,16 @@ Route::get('anggota/dashboard', function () {
 // });
 route::get('anggota/pesanan/{id}/pesanan', [pesananController::class, 'pesan']);
 route::post('anggota/pesanan/pesanan', [pesananController::class, 'action_pesan'])->name('pesan_sekarang');
+route::get('anggota/pesanan/riwayat', [pesananController::class, 'riwayat']);
 // route::get('anggota/setoran/bayar', [pesananController::class, 'setoran']);
 // Route::get('anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
 Route::get('/anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
-Route::get('/anggota/pesanan/riwayat/{id}', [setoranController::class, 'riwayat']);
-Route::get('/anggota/setoran/riwayat/{setoran}', [setoranController::class, 'sukses'])->name('setoran-sukses');
+Route::get('/anggota/setoran/riwayat/{id}', [setoranController::class, 'riwayat']);
+Route::get('/anggota/pesanan/riwayat/{setoran}', [setoranController::class, 'sukses'])->name('setoran-sukses');
 
 Route::get('/anggota/setoran/riwayat/{id}', [setoranController::class, 'riwayat']);
+route::post('/anggota/setoran/riwayat', [setoranController::class, 'setor'])->name('setor.lagi');
+Route::get('/anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
 
 // route petugas
 Route::get('petugas/dashboard', function () {

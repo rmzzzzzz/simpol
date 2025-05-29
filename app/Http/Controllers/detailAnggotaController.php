@@ -12,4 +12,5 @@ class detailAnggotaController extends Controller
         $data = detailAnggotaModel::get();
         return view('admin/data/pesanan', $data);
     }
+    
 }
