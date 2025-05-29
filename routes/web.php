@@ -47,6 +47,11 @@ route::get('admin/data/pesanan', [pesananController::class, 'pesanan']);
 Route::get('anggota/dashboard', function () {
     return view('anggota/dashboard');
 })->name('anggota.dashboard');
+Route::get('anggota/dashboard', [produkController::class, 'anggotaDashboard'])->name('anggota.dashboard');
+Route::get('/anggota/pemesanan/{id}', [pesananController::class, 'formPesan'])->name('order.form');
+Route::post('/anggota/pemesanan/submit', [pesananController::class, 'submit'])->name('order.submit');
+
+
 
 // route petugas
 Route::get('petugas/dashboard', function () {
