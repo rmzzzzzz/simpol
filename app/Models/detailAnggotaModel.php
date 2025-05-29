@@ -9,5 +9,13 @@ class detailAnggotaModel extends Model
 {
    use HasFactory;
     protected $table = 'detail_anggota';
+    protected $primaryKey = 'id_anggota';
     protected $guarded = [];
+
+  
+public function pesanan()
+{
+    return $this->hasMany(pesananModel::class, 'detail_anggota_id', 'id_anggota');
+}
+
 }

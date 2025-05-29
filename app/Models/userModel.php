@@ -10,4 +10,9 @@ class userModel extends Model
     use HasFactory;
     protected $table = 'users';
     protected $guarded = [];
+
+      public function detail_anggota()
+{
+    return $this->hasOne(detailAnggotaModel::class, 'anggota_id', 'id');
+}
 }

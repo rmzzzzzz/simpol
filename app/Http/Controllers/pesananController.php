@@ -94,11 +94,17 @@ $setoran->save();
     }
 }
 
-// public function setoran($id)
-// {
-//     $setoran = SetoranModel::findOrFail($id); // Ambil data berdasarkan id
-//     return view('anggota.pesanan.pesanan', compact('setoran')); // Kirim ke view
-// }
+public function riwayat()
+{
+//    $user = auth()->user();
+    $user = Auth::user()->id;
+    // dd($user);
+    $anggota = detailAnggotaModel::where('user_id', $user)->first();
+    // dd($idAnggota);
+    $idAnggota = $anggota->id_anggota;
+    $data['pesanan'] = pesananModel::where('detail_anggota_id', $idAnggota)->get();
+        return view('/anggota/pesanan/riwayat', $data);
+}
 
 
 }
