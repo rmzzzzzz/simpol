@@ -14,9 +14,9 @@ return new class extends Migration
        Schema::create('setoran', function (Blueprint $table) {
     $table->id('id_setoran');
     $table->unsignedBigInteger('pesanan_id');
-    $table->string('nominal_uang');
-    $table->date('tanggal');
-    $table->integer('total_setoran');
+    $table->bigInteger('nominal_uang');
+    $table->string('snap_token');
+    $table->enum('status', ['proses', 'gagal', 'berhasil'])->default('proses');
     $table->timestamps();
 
     $table->foreign('pesanan_id')->references('id_pesanan')->on('pesanan')->onDelete('cascade');

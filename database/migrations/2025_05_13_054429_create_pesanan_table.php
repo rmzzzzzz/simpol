@@ -16,7 +16,6 @@ return new class extends Migration
     $table->unsignedBigInteger('detail_anggota_id');
     $table->unsignedBigInteger('produk_id');
     $table->integer('jumlah');
-    $table->date('tanggal');
     $table->bigInteger('total');
     $table->timestamps();
 
