@@ -11,4 +11,10 @@ class distribusiModel extends Model
     protected $table = 'distribusi';
     protected $primaryKey = 'id_distribusi';
     protected $guarded = [];
+
+    public function pesanan()
+{
+    return $this->belongsTo(pesananModel::class, 'pesanan_id', 'id_pesanan');
+}
+
 }
