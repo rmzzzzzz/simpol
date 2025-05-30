@@ -21,7 +21,10 @@ class kategoriController extends Controller
     }
      public function action_tambah(Request $request){
      $request->validate([
-            'nama_kategori' => ['required', 'string', 'max:255']
+            'nama_kategori' => ['required', 'string', 'max:255','unique:kategori,nama_kategori']
+        ], 
+            [
+        'nama_kategori.unique' => 'Nama kategori sudah terdaftar.'
         ]);
 
         kategoriModel::create($request->all());

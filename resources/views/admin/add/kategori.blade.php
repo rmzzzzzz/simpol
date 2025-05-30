@@ -9,7 +9,9 @@
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="nama_kategori" :value="old('nama')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            @error('nama_kategori')
+                 <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="flex items-center justify-end mt-4">
 
