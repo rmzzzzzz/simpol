@@ -26,7 +26,7 @@
       <div class="scroll-sidebar" data-simplebar>
         <div class="d-flex mb-4 align-items-center justify-content-between">
             <a href="" class="text-nowrap logo-img ms-0 ms-md-1">
-              <img src="{{ asset('assets/images/logos/dark-logo.svg') }}" width="180" alt="">
+              <img src="{{ asset('assets/images/logos/image.png') }}" width="180" alt="">
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
               <i class="ti ti-x fs-8"></i>
@@ -37,7 +37,7 @@
           <ul id="sidebarnav" class="mb-4 pb-2">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-              <span class="hide-menu">Home</span>
+              <span class="hide-menu"></span>
             </li>
             @if (Auth::user()->role=='admin')
             <li class="sidebar-item">
@@ -194,30 +194,7 @@
           </li>
         @endif
         </ul>
-        
-        {{-- <div class="mt-5 blocks-card sidebar-ad">
-          <div class="card bg-light-primary">
-            <div class="card-body">
-              <div class="text-center">
-                <img
-                src="../assets/images/backgrounds/education-blocks.png"
-                width="136"
-                height="136"
-                class="mt-n9"
-                    alt=""
-                  />
-
-                  <h5>Are you<br/> satisfied ?</h5>
-
-                  <div class="mt-4">
-                    <a href="" target="_blank" class="btn btn-primary buynow-link w-100 px-2">
-                      Buy Now
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> --}}
+       
         </nav>
         <!-- End Sidebar navigation -->
       </div>
@@ -235,12 +212,6 @@
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                <i class="ti ti-bell-ringing"></i>
-                <div class="notification bg-primary rounded-circle"></div>
-              </a>
-            </li>
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbar-nav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -251,23 +222,13 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    {{-- <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                     
-                     
-                      <p class="mb-0 fs-3">My Profile</p>
-                    </a>   --}}
+            
                     <x-dropdown-link :href="route('profile.edit')">
                     <i class="ti ti-user fs-6"></i>
                             {{ __('Profile') }}
                         </x-dropdown-link>
                       <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
-                            {{-- <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link> --}} 
                             <a :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();" class="btn btn-outline-primary mx-3 mt-2 d-block shadow-none">{{('Log Out') }}</a>
@@ -287,19 +248,15 @@
 
       </div>
 {{-- end isi content --}}
-
-       <div class="py-6 px-6 text-center">
-          <p class="mb-0 fs-4">Design and Developed by <a href="" target="_blank" class="pe-1 text-primary text-decoration-underline">yang buat</a></p>
-        </div>
       </div>
     </div>
   </div>
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/sidebarmenu.js"></script>
-  <script src="../assets/js/app.min.js"></script>
-  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-  <script src="../assets/js/dashboard.js"></script>
+  <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
+  <script src="{{ asset('assets/js/app.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
+  <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 </body>
 </html>
