@@ -2,16 +2,16 @@
 @extends('layouts.navigation')
 @section('content')
     {{-- <x-guest-layout> --}}
-@if (session('error'))
+@if (session('errors'))
     <div class="alert alert-danger">
-        <strong>Session Error:</strong> {{ session('error') }}
+        <strong>Lengkapi dulu alamat dan no hp anda di menu profil</strong>
     </div>
 @endif
  <form method="POST" action="{{ route('pesan_sekarang') }}">
     @csrf
 
     <!-- ID Produk -->
-    <div>
+    <div class="hidden">
         <x-input-label for="id_barang" :value="__('ID Produk')" />
         <x-text-input id="id_barang" class="block mt-1 w-full" type="text"
             name="id_barang" :value="$produk->id_barang" readonly />
@@ -19,7 +19,7 @@
     </div>
 
     <!-- ID Anggota -->
-    <div>
+    <div class="hidden">
         <x-input-label for="detailanggota_id" :value="__('Detail Anggota ID')" />
         <x-text-input id="detailanggota_id" class="block mt-1 w-full" type="text"
             name="detailanggota_id"
@@ -28,35 +28,35 @@
     </div>
 
     <!-- Nama Produk -->
-    <div>
+    <div class="mt-4">
         <x-input-label for="nama_produk" :value="__('Nama Produk')" />
         <x-text-input id="nama_produk" class="block mt-1 w-full" type="text"
             name="nama_produk" :value="$produk->nama_produk" readonly />
     </div>
 
     <!-- Jumlah -->
-    <div>
+    <div class="mt-4">
         <x-input-label for="jumlah" :value="__('Jumlah')" />
         <x-text-input id="jumlah" class="block mt-1 w-full" type="number"
             name="jumlah" required />
     </div>
 
     <!-- Harga -->
-    <div>
+    <div class="mt-4">
         <x-input-label for="harga" :value="__('Harga')" />
         <x-text-input id="harga" class="block mt-1 w-full" type="number"
             name="harga" :value="$produk->harga" readonly />
     </div>
 
     <!-- Total -->
-    <div>
+    <div class="mt-4">
         <x-input-label for="total" :value="__('Total')" />
         <x-text-input id="total" class="block mt-1 w-full" type="number"
             name="total" readonly />
     </div>
 
     <!-- Awal Setoran -->
-    <div>
+    <div class="mt-4">
         <x-input-label for="awal_setoran" :value="__('Awal Setoran')" />
         <x-text-input id="awal_setoran" class="block mt-1 w-full" type="number"
             name="jumlah_bayar" readonly />

@@ -2,13 +2,13 @@
 @section('content')
      <div class="card">
                     <div class="card-header">
-                      Featured
+                      Pembayaran
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <h5 class="card-title">{{'Rp' . number_format($nominal, 0, ',', '.' ??'') }}</h5>
+                      <p class="card-text">Silahkan segera melakukan pembayaran.</p>
                       {{-- <a href="#" class="btn btn-primary" id="pay-button">bayar sekaraang</a> --}}
-                      <button type="button" class="btn btn-primary" id="pay-button">bayar sekarang</button>
+                      <button type="button" class="btn btn-primary mt-4" id="pay-button">bayar sekarang</button>
                     </div>
                   </div>
                   <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>

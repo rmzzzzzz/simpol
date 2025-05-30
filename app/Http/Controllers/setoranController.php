@@ -16,7 +16,8 @@ public function bayar($id)
 // dd($setoran->snap_token);
     return view('/anggota/setoran/bayar', [
         'snapToken' => $setoran->snap_token,
-        'id'=>$setoran->id_setoran
+        'id'=>$setoran->id_setoran,
+        'nominal'=>$setoran->nominal_uang
     ]);
 }
 

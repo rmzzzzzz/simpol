@@ -88,9 +88,9 @@ $setoran->save();
 
         DB::commit();
         return redirect()->route('setoran.bayar', $setoran->id_setoran)->with('success', 'Pesanan dan Transaksi berhasil disimpan');
-    } catch (\Exception $e) {
+    } catch (\Exception ) {
         DB::rollBack();
-         return back()->withErrors(['error' => 'Gagal menyimpan data: ' . $e->getMessage()])->withInput();
+         return back()->with(['errors' => 'Gagal menyimpan data: '])->withInput();
     }
 }
 
