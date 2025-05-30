@@ -1,47 +1,135 @@
 @extends('layouts.navigation')
-
 @section('content')
-<h2 class="text-xl font-bold mb-4">Distribusi - Dikirim</h2>
-<!-- <a href="{{ route('distribusi.selesai') }}" class="text-blue-500 underline mb-4 inline-block">Lihat yang Selesai</a> -->
-
-{{-- Flash message --}}
 @if (session('success'))
-    <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
+    <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
-
-<table class="table-auto w-full border">
-    <thead class="bg-gray-100">
-        <tr>
-            <th class="border px-4 py-2">Nama Anggota</th>
-            <th class="border px-4 py-2">Produk</th>
-            <th class="border px-4 py-2">Jumlah</th>
-            <th class="border px-4 py-2">Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @forelse ($distribusi as $item)
-            <tr>
-                <td class="border px-4 py-2">{{ $item->pesanan->detail_anggota->nama_anggota ?? '-' }}</td>
-                <td class="border px-4 py-2">{{ $item->pesanan->produk->nama_produk ?? '-' }}</td>
-                <td class="border px-4 py-2">{{ $item->pesanan->jumlah }}</td>
-                <td class="border px-4 py-2">
-                    {{ ucfirst($item->status) }}
-                    @if ($item->status !== 'selesai')
-                        <form action="{{ route('distribusi.updateStatus', $item->id) }}" method="POST" class="inline">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit" class="ml-2 text-green-500 underline">Tandai Selesai</button>
-                        </form>
-                    @endif
-                </td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="4" class="text-center p-4">Tidak ada data distribusi dikirim.</td>
-            </tr>
-        @endforelse
-    </tbody>
-</table>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <div class="container">
+                            <div class="d-flex mb-4 justify-content-between align-items-center">
+                              <div>
+                                <h6>Produk table</h6>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            no</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            nama</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            produk</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            alamat</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            no.hp</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            jumlah</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            total</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            status</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ( $data as $item)  
+                                    {{-- <pre>{{ dd($item) }}</pre> --}}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                            <p class="text-xs font-weight-bold mb-2 ">{{ $loop->iteration }}</p>
+                                        </div>
+                                        </div>
+                                    
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $item->pesanan->detail_anggota->nama_anggota }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $item->pesanan->produk->nama_produk }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $item->pesanan->detail_anggota->alamat }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $item->pesanan->detail_anggota->no_hp }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $item->pesanan->jumlah }} KG</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">Rp {{ number_format($item->pesanan->total, 0, ',', '.') }}</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $item->status }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                           <td class="flex items-center justify-center gap-2">
+                                        
+                                            {{-- @foreach($pesanan as $item) --}}
+                                              <form method="POST" action="{{ route('status.selesai') }}">
+                                                @csrf
+                                                <!-- ID pesanan -->
+                                                <input type="hidden" name="id_distribusi" value="{{ $item->id_distribusi }}">
+                                                <x-primary-button>
+                                                    {{ __('kirim') }}
+                                                </x-primary-button>
+                                                 </form>
+                                        </td>
+                                    </tr>
+                                        @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

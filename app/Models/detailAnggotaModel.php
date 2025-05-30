@@ -17,5 +17,8 @@ public function pesanan()
 {
     return $this->hasMany(pesananModel::class, 'detail_anggota_id', 'id_anggota');
 }
-
+public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
 }

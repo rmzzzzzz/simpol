@@ -162,18 +162,6 @@
                 <span class="hide-menu ms-2 ps-1">Selesai</span>
               </a>
             </li>
-                 <li class="sidebar-item">
-              <a
-                class="sidebar-link sidebar-link danger-hover-bg"
-                href="./ui-alerts.html"
-                aria-expanded="false"
-              >
-                <span class="aside-icon p-2 bg-light-danger rounded-3">
-                  <i class="ti ti-alert-circle fs-7 text-danger"></i>
-                </span>
-                <span class="hide-menu ms-2 ps-1">Alerts</span>
-              </a>
-            </li>
           
             <li class="sidebar-item">
             @endif

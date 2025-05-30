@@ -67,9 +67,7 @@ class pesananController extends Controller
             'pesanan_id' => $pesanan->id_pesanan, // sesuaikan dengan primary key
             'nominal_uang' => $request->jumlah_bayar
         ]);
- if (!function_exists('curl_init')) {
-     dd('cURL is NOT enabled on your server.');
- }
+
 
         // Set your Merchant Server Key
 \Midtrans\Config::$serverKey = config('midtrans.serverKey');
@@ -92,7 +90,7 @@ $params = array(
 $snapToken = \Midtrans\Snap::getSnapToken($params);
 $setoran -> snap_token = $snapToken;
 $setoran->save();
-dd($snapToken);
+// dd($snapToken);
 
 $userId = User::where('role', 'petugas')->inRandomOrder()->value('id');
 distribusiModel::create([

@@ -42,27 +42,11 @@
                         <span class="fa fa-bars text-info"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        {{-- <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="event.html" class="nav-item nav-link">Events</a>
-                            <a href="menu.html" class="nav-item nav-link">Menu</a> --}}
-                            {{-- <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu bg-light">
-                                    <a href="book.html" class="dropdown-item">Booking</a>
-                                    <a href="blog.html" class="dropdown-item">Our Blog</a>
-                                    <a href="team.html" class="dropdown-item">Our Team</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
+                     
                         </div>
-                        <a href="{{ route('login') }}" class="btn btn-light py-2 px-4 d-none d-xl-inline-block rounded-pill">Log in</a>
+                        <a href="{{ route('login') }}" class="btn btn-light py-2 px-4 d-none d-xl-inline-block rounded-pill">Masuk</a>
 
-                        <a href="{{ route('register') }}" class="btn btn-light py-2 px-4 d-none d-xl-inline-block rounded-pill">Register</a>
+                        <a href="{{ route('register') }}" class="btn btn-light py-2 px-4 d-none d-xl-inline-block rounded-pill">Daftar</a>
                     </div>
                 </nav>
             </div>
@@ -75,7 +59,7 @@
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center">
@@ -95,10 +79,10 @@
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-7 col-md-12">
-                        <small class="d-inline-block fw-bold text-dark text-uppercase bg-light border border-info rounded-pill px-4 py-1 mb-4 animated bounceInDown">Welcome to Simpol</small>
-                        <h1 class="display-1 mb-4 animated bounceInDown">Book <span class="text-info">Simpol</span>Serv For Your Dream Event</h1>
-                        <a href="" class="btn btn-info border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft">Book Now</a>
-                        <a href="" class="btn btn-info border-0 rounded-pill py-3 px-4 px-md-5 animated bounceInLeft">Know More</a>
+                        <small class="d-inline-block fw-bold text-dark text-uppercase bg-light border border-info rounded-pill px-4 py-1 mb-4 animated bounceInDown">Selamat Datang Simpol</small>
+                        <h1 class="display-1 mb-4 animated bounceInDown">Pesan <span class="text-info">Simpol</span>Untuk Acara Spesial Anda</h1>
+                        <a href="login" class="btn btn-info border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft">Pesan Sekarang</a>
+                        {{-- <a href="" class="btn btn-info border-0 rounded-pill py-3 px-4 px-md-5 animated bounceInLeft">Know More</a> --}}
                     </div>
                     <div class="col-lg-5 col-md-12">
                         <img src="img/hero.png" class="img-fluid rounded animated zoomIn" alt="">

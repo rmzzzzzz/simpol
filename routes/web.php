@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\detailAnggotaController;
 use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\pesananController;
@@ -44,7 +45,11 @@ Route::post('admin/edit/{id}/produk', [produkController::class, 'action_edit']);
 Route::get('admin/data/produk/{id}/hapus', [produkController::class, 'hapus']);
 
 route::get('admin/data/pesanan', [pesananController::class, 'pesanan']);
+route::get('admin/data/dikirim', [adminController::class, 'dikirim']);
+route::get('admin/data/selesai', [adminController::class, 'selesai']);
 
+Route::get('admin/data/setoran/{id}', [adminController::class, 'riwayat']);
+Route::post('/admin/data/pesanan', [adminController::class, 'update'])->name('status.kirim');
 
 //  Route::get('/add/user')->name('add.user');
 // route anggota
@@ -72,6 +77,7 @@ route::post('/anggota/setoran/riwayat', [setoranController::class, 'setor'])->na
 Route::get('/anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
 
 Route::get('/anggota/pesanan/distribusi', [pesananController::class, 'distribusi']);
+Route::post('/anggota/distribusi/dikirim', [distribusiController::class, 'update'])->name('status.selesai');
 
 // route petugas
 Route::get('petugas/dashboard', function () {
