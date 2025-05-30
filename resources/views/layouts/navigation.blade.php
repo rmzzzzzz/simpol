@@ -68,9 +68,33 @@
                 <span class="hide-menu ms-2 ps-1">Pesanan</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a
+                class="sidebar-link sidebar-link primary-hover-bg"
+                href='/admin/data/dikirim'
+                aria-expanded="false"
+              >
+                <span class="aside-icon p-2 bg-light-primary rounded-3">
+                  <i class="ti ti-truck-delivery fs-7 text-primary"></i>
+                </span>
+                <span class="hide-menu ms-2 ps-1">Dikirim</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a
+                class="sidebar-link sidebar-link success-hover-bg"
+                href='/admin/data/selesai'
+                aria-expanded="false"
+              >
+                <span class="aside-icon p-2 bg-light-success rounded-3">
+                  <i class="ti ti-checklist fs-7 text-success"></i>
+                </span>
+                <span class="hide-menu ms-2 ps-1">Selesai</span>
+              </a>
+            </li>
            <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-              <span class="hide-menu">UI Componenst</span>
+              <span class="hide-menu">Data</span>
             </li>
             <li class="sidebar-item">
               <a

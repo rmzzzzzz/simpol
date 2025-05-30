@@ -2,7 +2,7 @@
 @extends('layouts.navigation')
 @section('content')
     {{-- <x-guest-layout> --}}
-    <form method="POST" action="/admin/edit/{{ $detail->id_barang }}/produk">
+    <form method="POST" action="/admin/edit/{{ $detail->id_barang }}/produk" enctype="multipart/form-data">>
         @csrf
 
         <!-- Name -->
@@ -27,6 +27,10 @@
             <x-input-label for="harga" :value="__('harga')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="harga" :value="old('nama',$detail->harga)" required autofocus autocomplete="harga" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+         <div class="mt-4">
+            <x-input-label for="foto" :value="__('Foto')" />
+            <x-text-input id="foto" class="block mt-1 w-full" type="file" name="foto" :value="old('nama')" required autofocus autocomplete="foto" />
         </div>
         <div class="flex items-center justify-end mt-4">
 

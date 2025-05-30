@@ -1,5 +1,10 @@
 @extends('layouts.navigation')
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -95,9 +100,19 @@
                                             </div>
                                         </td>
 
-                                        <td class="align-middle text-center text-sm">
-                                           <a href="{{ $item->id }}/edit"> <x-secondary-button>setoran</x-secondary-button></a>
-                                           <a href="{{ $item->id }}/hapus"> <x-danger-button>hapus</x-danger-button></a>
+                                        <td class="flex items-center justify-center gap-2">
+                                           <a href="/admin/data/setoran/{{ $item->id_pesanan }}">
+                                                <x-secondary-button>Setoran</x-secondary-button>
+                                            </a>
+                                            {{-- @foreach($pesanan as $item) --}}
+                                              <form method="POST" action="{{ route('status.kirim') }}">
+                                                @csrf
+                                                <!-- ID pesanan -->
+                                                <input type="hidden" name="id_distribusi" value="{{ $item->distribusi->first()?->id_distribusi }}">
+                                                <x-primary-button>
+                                                    {{ __('kirim') }}
+                                                </x-primary-button>
+                                                 </form>
                                         </td>
                                     </tr>
                                         @endforeach

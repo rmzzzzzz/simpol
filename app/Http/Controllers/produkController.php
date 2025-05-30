@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\kategoriModel;
 use App\Models\produkModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class produkController extends Controller
 {
@@ -21,13 +23,19 @@ class produkController extends Controller
         return view('admin/add/produk', $data);
     }
      public function action_tambah(Request $request){
-     $request->validate([
-            'nama_produk' => ['required', 'string', 'max:255'],
-            'harga' => ['required', 'string', 'max:255'],
-            'kategori_id' => ['required', 'string', 'max:255']
-        ]);
-
-        produkModel::create($request->all());
+         $request->validate([
+        'nama_produk' => ['required', 'string', 'max:255'],
+        'harga' => ['required', 'string', 'max:255'],
+        'kategori_id' => ['required', 'string', 'max:255'],
+        'foto' => ['required', 'mimes:png,jpg,jpeg', 'max:2048']
+    ]);
+    $foto = $request->file('foto')->store('fotoProduk', 'public');
+    produkModel::create([
+        'nama_produk' => $request->nama_produk,
+        'harga' => $request->harga,
+        'kategori_id' => $request->kategori_id,
+        'foto' => $foto,
+    ]);
         return redirect('/admin/data/produk')->with('success', 'Berhasil Di Tambah');
     }
 
@@ -43,12 +51,29 @@ class produkController extends Controller
  
 public function action_edit(Request $request, $id)
 {
-    $produk = produkModel::findOrFail($id);
-
-    $validatedData = $request->validate([
-        'nama_produk' => ['required', 'string', 'max:255']
+    $request->validate([
+        'nama_produk' => ['required', 'string', 'max:255'],
+        'harga' => ['required', 'string', 'max:255'],
+        'kategori_id' => ['required', 'string', 'max:255'],
+        'foto' => ['nullable', 'mimes:png,jpg,jpeg', 'max:2048']
     ]);
-    $produk->update($validatedData); // pastikan $fillable benar di model produk
+
+    $produk = produkModel::findOrFail($id);
+    if ($request->hasFile('foto')) {
+
+        if ($produk->foto && Storage::disk('public')->exists($produk->foto)) {
+            Storage::disk('public')->delete($produk->foto);
+        }
+        $fotoBaru = $request->file('foto')->store('produk', 'public');
+    } else {
+        $fotoBaru = $produk->foto; 
+    }
+    $produk->update([
+        'nama_produk' => $request->nama_produk,
+        'harga' => $request->harga,
+        'kategori_id' => $request->kategori_id,
+        'foto' => $fotoBaru,
+    ]);
 
     return redirect('/admin/data/produk')->with('success', 'Data Berhasil Diperbarui');
 }

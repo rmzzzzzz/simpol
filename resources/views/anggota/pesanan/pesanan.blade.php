@@ -15,7 +15,6 @@
         <x-input-label for="id_barang" :value="__('ID Produk')" />
         <x-text-input id="id_barang" class="block mt-1 w-full" type="text"
             name="id_barang" :value="$produk->id_barang" readonly />
-        <x-input-error :messages="$errors->get('id_barang')" class="mt-2" />
     </div>
 
     <!-- ID Anggota -->

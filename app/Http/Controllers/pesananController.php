@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\detailAnggotaModel;
+use App\Models\distribusiModel;
 use App\Models\pesananModel;
 use App\Models\produkModel;
 use App\Models\setoranModel;
+use App\Models\User;
 use App\Models\userModel;
 // use Illuminate\Container\Attributes\DB;
 use Illuminate\Http\Request;
@@ -20,9 +22,14 @@ class pesananController extends Controller
 {
     public function pesanan()
     {
-        $data['pesanan'] = pesananModel::get();
+           $data['pesanan'] = pesananModel::whereHas('distribusi', function($query) {
+                                      $query->where('status', 'proses');
+                                  })
+                                  ->with(['produk', 'detail_anggota', 'distribusi'])
+                                  ->get();
         return view('admin/data/pesanan', $data);
     }
+
         public function pesan($id)
     {
         $produk = produkModel::findOrFail($id);
@@ -86,6 +93,12 @@ $snapToken = \Midtrans\Snap::getSnapToken($params);
 $setoran -> snap_token = $snapToken;
 $setoran->save();
 
+$userId = User::where('role', 'petugas')->inRandomOrder()->value('id');
+distribusiModel::create([
+    'user_id'=>$userId,
+'pesanan_id' => $pesanan->id_pesanan,
+'anggota_id' => $request->detailanggota_id,
+]);
         DB::commit();
         return redirect()->route('setoran.bayar', $setoran->id_setoran)->with('success', 'Pesanan dan Transaksi berhasil disimpan');
     } catch (\Exception ) {
@@ -115,7 +128,9 @@ public function distribusi()
 //             : collect();
 $data = $user->detail_anggota
             ? $user->detail_anggota->pesanan()
-                ->whereHas('distribusi')
+                ->whereHas('distribusi', function($query) {
+                    $query->where('status', 'dikirim');
+                })
                 ->with(['produk', 'distribusi'])
                 ->get()
             : collect();

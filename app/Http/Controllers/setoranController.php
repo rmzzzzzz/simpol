@@ -73,7 +73,7 @@ $detail = DB::table('setoran')
     ->where('setoran.pesanan_id', $id)
     ->get();
 
-$total = $detail->sum('nominal_uang');
+$total = $detail->where('status', 'berhasil')->sum('nominal_uang');
 
 $data = [
     'detail' => $detail,

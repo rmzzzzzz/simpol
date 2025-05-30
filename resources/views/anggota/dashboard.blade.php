@@ -164,7 +164,7 @@
         <div class="products-container">
             @foreach($items as $item)
                 <div class="card">
-                    <img src="{{ $item->image_url }}" alt="{{ $item->nama_produk }}" class="card-img-top">
+                    <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->nama_produk }}" class="card-img-top">
                     <div class="card-body">
                         <div class="card-title">{{ $item->nama_produk }}</div>
                         <div class="card-text">Rp {{ number_format($item->harga, 0, ',', '.') }}</div>
