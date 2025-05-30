@@ -1,4 +1,5 @@
 @extends('layouts.navigation')
+
 @section('content')
 <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -6,9 +7,14 @@
     </h2>
 </x-slot>
 
-<div id="notif"
-     class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white font-bold py-3 px-6 rounded shadow-lg z-50">
-    You're logged in anggota!
+{{-- Notifikasi login --}}
+<div id="notif" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="notify-box">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        Berhasil login sebagai <span class="highlight">anggota</span>!
+    </div>
 </div>
 
 <script>
@@ -18,7 +24,57 @@
 </script>
 
 <style>
-    /* Dashboard main title */
+    @keyframes fadeScaleIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    #notif {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+    }
+
+    #notif .notify-box {
+        background: linear-gradient(135deg, #38b2ac, #319795);
+        color: #f0fdfa;
+        font-size: 1.125rem;
+        font-weight: 600;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(50, 50, 60, 0.2), 0 1px 3px rgba(50, 50, 60, 0.15);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        animation: fadeScaleIn 0.4s ease forwards;
+        user-select: none;
+    }
+
+    #notif .notify-box .icon {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        fill: #a7f3d0;
+    }
+
+    #notif .notify-box .highlight {
+        font-weight: 700;
+        color: #d4f9f0;
+    }
+
+    /* Dashboard styles */
     .dashboard-title {
         text-align: center;
         font-weight: 800;
@@ -36,16 +92,18 @@
         border-bottom: 3px solid #007bff;
         padding-bottom: 0.25rem;
     }
-    /* Added margin-bottom for spacing below category title */
+
     .category-section {
-        margin-bottom: 2rem; /* space between category and next category */
+        margin-bottom: 2rem;
     }
+
     .products-container {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        margin-top: 1rem; /* space between category title and products */
+        margin-top: 1rem;
     }
+
     .card {
         background: #fff;
         border-radius: 8px;
@@ -54,27 +112,33 @@
         overflow: hidden;
         transition: transform 0.2s ease;
     }
+
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
+
     .card img {
         width: 100%;
         height: 160px;
         object-fit: cover;
     }
+
     .card-body {
         padding: 1rem;
     }
+
     .card-title {
         font-size: 1.2rem;
         font-weight: bold;
     }
+
     .card-text {
         color: #6c757d;
         font-size: 0.9rem;
         margin: 0.5rem 0;
     }
+
     .btn-primary {
         background-color: #007bff;
         color: white;
@@ -85,6 +149,7 @@
         display: inline-block;
         cursor: pointer;
     }
+
     .btn-primary:hover {
         background-color: #0056b3;
     }
