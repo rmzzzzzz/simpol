@@ -66,13 +66,19 @@ $setoran->save();
 
  public function riwayat($id)
     {
-        $data =['detail'=> DB::table('setoran')
+$detail = DB::table('setoran')
     ->rightJoin('pesanan', 'pesanan.id_pesanan', '=', 'setoran.pesanan_id')
     ->select('setoran.*', 'pesanan.*')
     ->where('setoran.pesanan_id', $id)
-    ->get()];
+    ->get();
 
+$total = $detail->sum('nominal_uang');
 
+$data = [
+    'detail' => $detail,
+    'total' => $total
+];
+   
         return view("anggota/setoran/riwayat", $data);}
 
 public function sukses(setoranModel $setoran ){

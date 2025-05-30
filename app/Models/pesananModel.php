@@ -26,5 +26,10 @@ class pesananModel extends Model
     return $this->hasMany(setoranModel::class, 'pesanan_id', 'id_pesanan'); 
     // Sesuaikan nama primary key pesanan di model pesananModel
 }
+    public function distibusi()
+{
+    return $this->hasMany(distribusiModel::class, 'pesanan_id', 'id_pesanan'); 
+    // Sesuaikan nama primary key pesanan di model pesananModel
+}
 
 }

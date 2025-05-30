@@ -57,6 +57,20 @@
                                 
                                     </tr>
                                         @endforeach
+                                         <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{'Total'}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                         <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $total ??''}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
                                 </tbody>
                             </table>
                         </div>

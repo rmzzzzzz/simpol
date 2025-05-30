@@ -101,11 +101,46 @@ public function riwayat()
     // dd($user);
     $anggota = detailAnggotaModel::where('user_id', $user)->first();
     // dd($idAnggota);
-    $idAnggota = $anggota->id_anggota;
+    $idAnggota = $anggota->id_anggota ??'';
     $data['pesanan'] = pesananModel::where('detail_anggota_id', $idAnggota)->get();
         return view('/anggota/pesanan/riwayat', $data);
 }
 
+public function distribusi()
+{
+    $user = Auth::user(); // atau $request->user();
 
+// $data = $user->detail_anggota
+//             ? $user->detail_anggota->pesanan->load(['produk', 'distibusi'])
+//             : collect();
+$data = $user->detail_anggota
+            ? $user->detail_anggota->pesanan()->with(['produk', 'distibusi'])->get()
+            : collect();
+// $data = $user->detail_anggota
+//             ? $user->detail_anggota->pesanan->load('distibusi')
+//             : collect(); // handle jika belum ada detailAnggota
+//             // dd($user->id);
+//             // dd($user->detail_anggota->user_id);
+//             // dd($data);
+//             return view('/anggota/pesanan/distribusi', [
+//     'data' => $data
+return view('/anggota/pesanan/distribusi', [
+    'data' => $data
+]);
+
+
+//     $detail = DB::table('distribusi')
+//     ->rightJoin('pesanan', 'pesanan.id_pesanan', '=', 'distribusi.pesanan_id')
+//     ->select('distribusi.*', 'pesanan.*')
+//     ->where('distribusi.pesanan_id', $id)
+//     ->get();
+
+// $total = $detail->sum('nominal_uang');
+
+// $data = [
+//     'detail' => $detail,
+//     'total' => $total
+// ];
+}
 }
 
