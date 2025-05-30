@@ -47,10 +47,11 @@ route::get('admin/data/pesanan', [pesananController::class, 'pesanan']);
 
 //  Route::get('/add/user')->name('add.user');
 // route anggota
-Route::get('anggota/dashboard', function () {
-    return view('/anggota/dashboard');
-})->name('dashboard');
-Route::get('anggota/dashboard', [produkController::class, 'anggotaDashboard'])->name('anggota.dashboard');
+// Route::get('anggota/dashboard', function () {
+//     return view('/anggota/dashboard');
+// })
+
+Route::get('anggota/dashboard', [produkController::class, 'anggotaDashboard'])->name('dashboard');
 
 
 // Route::get('anggota/pesanan/pesanan', function () {

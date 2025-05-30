@@ -80,7 +80,7 @@
                                         <td>
                                             <div class="align-middle text-center text-sm">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{$item->distibusi->first()?->status ??''}}</h6>
+                                                    <h6 class="mb-0 text-sm">{{$item->distribusi->first()?->status ??''}}</h6>
                                                 </div>
                                             </div>
                                         </td>                      

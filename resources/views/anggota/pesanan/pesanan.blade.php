@@ -2,7 +2,11 @@
 @extends('layouts.navigation')
 @section('content')
     {{-- <x-guest-layout> --}}
-   
+@if (session('error'))
+    <div class="alert alert-danger">
+        <strong>Session Error:</strong> {{ session('error') }}
+    </div>
+@endif
  <form method="POST" action="{{ route('pesan_sekarang') }}">
     @csrf
 
@@ -19,7 +23,7 @@
         <x-input-label for="detailanggota_id" :value="__('Detail Anggota ID')" />
         <x-text-input id="detailanggota_id" class="block mt-1 w-full" type="text"
             name="detailanggota_id"
-            :value="Auth::user()->detailanggota->id_anggota ?? ''"
+            :value="Auth::user()->detail_anggota->id_anggota ?? ''"
             readonly />
     </div>
 

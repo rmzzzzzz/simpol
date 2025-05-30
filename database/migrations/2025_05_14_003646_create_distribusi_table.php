@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('distibusi', function (Blueprint $table) {
+        Schema::create('distribusi', function (Blueprint $table) {
     $table->id('id_distribusi');
     $table->unsignedBigInteger('pesanan_id');
+    $table->unsignedBigInteger('user_id');
+    $table->unsignedBigInteger('anggota_id');
     $table->enum('status', ['dikirim', 'selesai']);
     $table->timestamps();
 
     $table->foreign('pesanan_id')->references('id_pesanan')->on('pesanan')->onDelete('cascade');
+    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+    $table->foreign('anggota_id')->references('id_anggota')->on('detail_anggota')->onDelete('cascade');
         });
     }
 

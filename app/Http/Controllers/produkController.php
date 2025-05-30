@@ -65,6 +65,6 @@ public function hapus($id)
         return strtolower($item->kategori->nama_kategori); // pastikan kolom ini sesuai
     });
 
-    return view('anggota.dashboard', compact('produk'));
+    return view('/anggota/dashboard', compact('produk'));
 }
 }

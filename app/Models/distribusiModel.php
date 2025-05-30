@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class distribusiModel extends Model
 {
     use HasFactory;
-    protected $table = 'distibusi';
+    protected $table = 'distribusi';
     protected $primaryKey = 'id_distribusi';
     protected $guarded = [];
 }
