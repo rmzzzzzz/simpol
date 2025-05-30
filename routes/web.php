@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\adminController;
 use App\Http\Controllers\detailAnggotaController;
 use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\pesananController;
@@ -8,6 +7,7 @@ use App\Http\Controllers\produkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\setoranController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\distribusiController;
 use App\Models\setoranModel;
 use Illuminate\Support\Facades\Route;
 
@@ -44,11 +44,7 @@ Route::post('admin/edit/{id}/produk', [produkController::class, 'action_edit']);
 Route::get('admin/data/produk/{id}/hapus', [produkController::class, 'hapus']);
 
 route::get('admin/data/pesanan', [pesananController::class, 'pesanan']);
-route::get('admin/data/dikirim', [adminController::class, 'dikirim']);
-route::get('admin/data/selesai', [adminController::class, 'selesai']);
 
-Route::get('admin/data/setoran/{id}', [adminController::class, 'riwayat']);
-Route::post('/admin/data/pesanan', [adminController::class, 'update'])->name('status.kirim');
 
 //  Route::get('/add/user')->name('add.user');
 // route anggota
@@ -81,6 +77,10 @@ Route::get('/anggota/pesanan/distribusi', [pesananController::class, 'distribusi
 Route::get('petugas/dashboard', function () {
     return view('petugas/dashboard');
 })->name('petugas/dashboard');
+
+Route::put('/distribusi/{id}/update-status', [distribusiController::class, 'updateStatus'])->name('distribusi.updateStatus');
+Route::get('petugas/distribusi/dikirim', [distribusiController::class, 'dikirim'])->name('distribusi.dikirim');
+Route::get('petugas/distribusi/selesai', [distribusiController::class, 'selesai'])->name('distribusi.selesai');
 
 });
 
