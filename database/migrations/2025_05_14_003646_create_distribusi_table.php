@@ -16,7 +16,7 @@ return new class extends Migration
     $table->unsignedBigInteger('pesanan_id');
     $table->unsignedBigInteger('user_id');
     $table->unsignedBigInteger('anggota_id');
-    $table->enum('status', ['dikirim', 'selesai'])->default('dikirim');
+    $table->enum('status', ['proses','dikirim', 'selesai'])->default('proses');
     $table->timestamps();
 
     $table->foreign('pesanan_id')->references('id_pesanan')->on('pesanan')->onDelete('cascade');
