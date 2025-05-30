@@ -46,8 +46,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-      public function detailanggota()
+      public function detail_anggota()
 {
-    return $this->hasOne(detailAnggotaModel::class);
+    return $this->hasOne(detailAnggotaModel::class,  'user_id', 'id');
 }
 }

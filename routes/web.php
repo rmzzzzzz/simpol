@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\detailAnggotaController;
 use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\pesananController;
 use App\Http\Controllers\produkController;
@@ -68,6 +69,8 @@ Route::get('/anggota/setoran/riwayat/{id}', [setoranController::class, 'riwayat'
 route::post('/anggota/setoran/riwayat', [setoranController::class, 'setor'])->name('setor.lagi');
 Route::get('/anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
 
+Route::get('/anggota/pesanan/distribusi', [pesananController::class, 'distribusi']);
+
 // route petugas
 Route::get('petugas/dashboard', function () {
     return view('petugas/dashboard');
@@ -76,6 +79,7 @@ Route::get('petugas/dashboard', function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::post('/profile', [detailAnggotaController::class, 'action_tambah'])->name('tambah.detail');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
