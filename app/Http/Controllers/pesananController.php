@@ -36,7 +36,7 @@ class pesananController extends Controller
 
         $data = [
             'produk' => $produk,
-            'user' => Auth::user(), // Ambil user yang login
+            'user' => Auth::user(), // ngambil user yang login
         ];
 
         return view('/anggota/pesanan/pesanan', $data);
@@ -59,12 +59,12 @@ class pesananController extends Controller
             'detail_anggota_id' => $request->detailanggota_id,
             'produk_id' => $request->id_barang,
             'jumlah' => $request->jumlah,
-            // 'tanggal' => now(), // wajib karena field tidak nullable
+            // 'tanggal' => now(),
             'total' => $request->total
         ]);
 
         $setoran = setoranModel::create([
-            'pesanan_id' => $pesanan->id_pesanan, // sesuaikan dengan primary key
+            'pesanan_id' => $pesanan->id_pesanan, 
             'nominal_uang' => $request->jumlah_bayar
         ]);
 
@@ -121,7 +121,7 @@ public function riwayat()
 
 public function distribusi()
 {
-    $user = Auth::user(); // atau $request->user();
+    $user = Auth::user(); 
 
 // $data = $user->detail_anggota
 //             ? $user->detail_anggota->pesanan->load(['produk', 'distibusi'])
@@ -137,8 +137,25 @@ $data = $user->detail_anggota
 return view('/anggota/pesanan/distribusi', [
     'data' => $data
 ]);
+}
+public function selesai()
+{
+    $user = Auth::user(); 
 
-
+// $data = $user->detail_anggota
+//             ? $user->detail_anggota->pesanan->load(['produk', 'distibusi'])
+//             : collect();
+$data = $user->detail_anggota
+            ? $user->detail_anggota->pesanan()
+                ->whereHas('distribusi', function($query) {
+                    $query->where('status', 'selesai');
+                })
+                ->with(['produk', 'distribusi',])
+                ->get()
+            : collect();
+return view('/anggota/pesanan/selesai', [
+    'data' => $data
+]);
 }
 }
 

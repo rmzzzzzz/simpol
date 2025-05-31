@@ -77,6 +77,7 @@ route::post('/anggota/setoran/riwayat', [setoranController::class, 'setor'])->na
 Route::get('/anggota/setoran/{id}/bayar', [SetoranController::class, 'bayar'])->name('setoran.bayar');
 
 Route::get('/anggota/pesanan/distribusi', [pesananController::class, 'distribusi']);
+Route::get('/anggota/pesanan/selesai', [pesananController::class, 'selesai']);
 Route::post('/anggota/distribusi/dikirim', [distribusiController::class, 'update'])->name('status.selesai');
 
 // route petugas

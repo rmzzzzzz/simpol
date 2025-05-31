@@ -14,7 +14,7 @@ class distribusiController extends Controller
         ->where('status', 'dikirim')
         ->with([
             'pesanan.produk',
-            'pesanan.detail_anggota.user' // kalau ingin nama user juga
+            'pesanan.detail_anggota.user'
         ])
         ->get();
 return view('/petugas/distribusi/dikirim', [
@@ -26,14 +26,8 @@ return view('/petugas/distribusi/dikirim', [
          $request->validate([
         'id_distribusi' => ['required', 'integer'],
     ]);
-
-    // Ambil ID dari inputan request, bukan dari seluruh objek request
     $id = $request->input('id_distribusi');
-
-    // Temukan data distribusi berdasarkan ID tersebut
     $distri = distribusiModel::findOrFail($id);
-
-    // Update status ke "dikirim"
     $distri->update([
         'status' => 'selesai',
     ]);
@@ -42,7 +36,7 @@ return view('/petugas/distribusi/dikirim', [
     }
     public function selesai()
     {
-        $user = Auth::user(); // atau 
+        $user = Auth::user(); 
   $data = distribusiModel::where('user_id', $user->id)
         ->where('status', 'selesai')
         ->with([

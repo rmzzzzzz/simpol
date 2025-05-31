@@ -203,9 +203,21 @@
               aria-expanded="false"
               >
               <span class="aside-icon p-2 bg-light-primary rounded-3">
-                <i class="ti ti-history fs-7 text-primary"></i>
+                <i class="ti ti-truck-delivery fs-7 text-primary"></i>
               </span>
               <span class="hide-menu ms-2 ps-1">Distribusi</span>
+            </a>
+          </li>
+            <li class="sidebar-item">
+              <a
+              class="sidebar-link sidebar-link primary-hover-bg"
+              href="/anggota/pesanan/selesai"
+              aria-expanded="false"
+              >
+              <span class="aside-icon p-2 bg-light-primary rounded-3">
+                <i class="ti ti-history fs-7 text-primary"></i>
+              </span>
+              <span class="hide-menu ms-2 ps-1">Selesai</span>
             </a>
           </li>
         @endif
