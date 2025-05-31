@@ -29,7 +29,7 @@
                 <form method="POST" action="{{ route('login') }}">
                      @csrf
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username Atau Email</label>
+                    <label for="exampleInputEmail1" class="form-label">Nama Atau Email</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" name="id_user" :value="old('id_user')" required autofocus autocomplete="id_user" />
             <x-input-error :messages="$errors->get('id_user')" class="mt-2" />
                   </div>

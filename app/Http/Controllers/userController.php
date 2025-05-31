@@ -31,7 +31,7 @@ class userController extends Controller
      $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'role' => ['required|in:admin,petugas,anggota',],
+            'role' => ['required','in:admin,petugas,anggota',],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -53,7 +53,7 @@ public function action_edit(Request $request, $id)
     $validatedData = $request->validate([
         'name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id],
-        // 'role' => ['required', 'in:admin,petugas,anggota'],
+        'role' => ['required', 'in:admin,petugas,anggota'],
         'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
     ]);
 
