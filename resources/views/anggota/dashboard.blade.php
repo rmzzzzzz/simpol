@@ -156,7 +156,7 @@
 </style>
 
 <!-- Main Dashboard Title -->
-<h1 class="dashboard-title">Dashboard Produk</h1>
+<h1 class="dashboard-title">Daftar Produk</h1>
 
 @foreach($produk as $kategori => $items)
     <section class="category-section">

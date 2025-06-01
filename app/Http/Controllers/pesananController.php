@@ -9,6 +9,7 @@ use App\Models\produkModel;
 use App\Models\setoranModel;
 use App\Models\User;
 use App\Models\userModel;
+use Carbon\Carbon;
 // use Illuminate\Container\Attributes\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,11 +66,10 @@ class pesananController extends Controller
 
         $setoran = setoranModel::create([
             'pesanan_id' => $pesanan->id_pesanan, 
-            'nominal_uang' => $request->jumlah_bayar
+            'nominal_uang' => $request->jumlah_bayar,
+            'jatuh_tempo' => Carbon::now()->addDays(30)
         ]);
 
-
-        // Set your Merchant Server Key
 \Midtrans\Config::$serverKey = config('midtrans.serverKey');
 // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
 \Midtrans\Config::$isProduction = false;
@@ -91,7 +91,6 @@ $snapToken = \Midtrans\Snap::getSnapToken($params);
 $setoran -> snap_token = $snapToken;
 $setoran->save();
 // dd($snapToken);
-
 $userId = User::where('role', 'petugas')->inRandomOrder()->value('id');
 distribusiModel::create([
     'user_id'=>$userId,

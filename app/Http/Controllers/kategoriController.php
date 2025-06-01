@@ -51,8 +51,11 @@ public function action_edit(Request $request, $id)
 }
 public function hapus($id)
     {
-        $user = kategoriModel::findOrfail($id);
-        $user->delete();
+        $kategori = kategoriModel::findOrfail($id);
+            if ($kategori->produk()->exists()) {
+        return back()->withErrors(['error' => 'Tidak bisa menghapus kategori karena masih memiliki produk terkait.']);
+    }
+        $kategori->delete();
         return back()->with('success', 'data user berhasil dihapus');
     }
 

@@ -71,6 +71,9 @@ public function action_edit(Request $request, $id)
  public function hapus($id)
     {
         $user = user::findOrfail($id);
+         if ($user->detail_anggota()->exists()) {
+            return back()->withErrors(['error' => 'Tidak bisa menghapus user karena masih memiliki data terkait.']);
+        }
         $user->delete();
         return back()->with('success', 'data user berhasil dihapus');
     }

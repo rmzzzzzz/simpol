@@ -1,10 +1,16 @@
 @extends('layouts.navigation')
 @section('content')
+@if ($errors->has('error'))
+    <div class="alert alert-danger">
+        {{ $errors->first('error') }}
+    </div>
+@endif
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
+
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -109,9 +115,9 @@
                                             <form method="POST" action="{{ route('setor.lagi') }}">
                                                 @csrf
                                                 <!-- ID pesanan -->
-                                                <input type="hidden" name="pesanan_id" value="{{ $item->id_pesanan }}">
+                                                <input type="" name="pesanan_id" value="{{ $item->id_pesanan }}">
                                                 <!--  nominal -->
-                                                <input type="hidden" name="nominal_uang" value="{{ $item->total / 12 }}">
+                                                <input type="" name="nominal_uang" value="{{ ceil($item->total / 12) }}">
                                                 <x-primary-button>
                                                     {{ __('Setor') }}
                                                 </x-primary-button>

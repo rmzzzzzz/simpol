@@ -26,7 +26,7 @@ route::get('admin/data/userdata', [userController::class, 'userdata']);
 // route::get('admin/add/user', [userController::class, 'user']);
 route::get('admin/add/user', [userController::class, 'tambah']);
 route::post('admin/add/user', [userController::class, 'action_tambah'])->name('add.user');
-route::get('admin/edit/{idi}/user', [userController::class, 'edit']);
+route::get('admin/edit/{id}/user', [userController::class, 'edit']);
 Route::post('admin/edit/{id}/user', [userController::class, 'action_edit']);
 Route::get('admin/data/userdata/{id}/hapus', [userController::class, 'hapus']);
 

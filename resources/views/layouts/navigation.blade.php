@@ -177,7 +177,7 @@
                 <span class="aside-icon p-2 bg-light-indigo rounded-3">
                   <i class="ti ti-typography fs-7 text-indigo"></i>
                 </span>
-                <span class="hide-menu ms-2 ps-1">Dashboard</span>
+                <span class="hide-menu ms-2 ps-1">Daftar Produk</span>
               </a>
                </li>
               <li class="nav-small-cap">

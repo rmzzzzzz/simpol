@@ -32,7 +32,7 @@ $data = [
         'id_distribusi' => ['required', 'integer'],
     ]);
 
-    // Ambil ID dari inputan request, bukan dari seluruh objek request
+
     $id = $request->input('id_distribusi');
 
     // Temukan data distribusi berdasarkan ID tersebut
