@@ -30,6 +30,7 @@ if (!is_null($setoran->id)) {
         ->orderByDesc('id_setoran')
         ->first();
 // dd($setoranSebelumnya);
+ $jatuhTempo = Carbon::parse($setoranSebelumnya->jatuh_tempo ?? '');
     if ($setoranSebelumnya) {
         $jatuhTempo = Carbon::parse($setoranSebelumnya->jatuh_tempo);
 
@@ -98,9 +99,12 @@ public function setor(Request $request)
         $totalSetoran = setoranModel::where('pesanan_id', $pesanan->id_pesanan)->where('status', 'berhasil')->sum('nominal_uang');
 
         // Cek lunas
-        // if ($totalSetoran >= $totalTagihan) {
-        //     return back()->withErrors(['error' => 'Tagihan sudah lunas. Tidak bisa setor lagi.']);
-        // }
+        if ($totalSetoran >= $totalTagihan) {
+            // return back()->withErrors(['errors' => 'Tagihan sudah lunas. Tidak bisa setor lagi.']);
+             return redirect()->route('pesanan.riwayat')->withErrors(['errors' => 'Tagihan sudah lunas. Tidak bisa setor lagi.']);
+             
+        }
+        
 // dd(session()->all());
         // Simpan setoran
         $setoran = setoranModel::create([

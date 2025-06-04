@@ -105,14 +105,19 @@
                                                 <x-secondary-button>Setoran</x-secondary-button>
                                             </a>
                                             {{-- @foreach($pesanan as $item) --}}
-                                              <form method="POST" action="{{ route('status.kirim') }}">
-                                                @csrf
-                                                <!-- ID pesanan -->
-                                                <input type="hidden" name="id_distribusi" value="{{ $item->distribusi->first()?->id_distribusi }}">
-                                                <x-primary-button>
-                                                    {{ __('kirim') }}
-                                                </x-primary-button>
-                                                 </form>
+                                            @if (optional($item->setoran_berhasil)->sum('nominal_uang') < $item->total)
+                                                 <span class="text-red-600 font-semibold">Belum lunas</span>
+                                                 {{-- <input type="" name="id_distribusi" value="{{ optional($item->setoran_berhasil)->sum('nominal_uang')}}"> --}}
+                                                 @else
+                                            <form method="POST" action="{{ route('status.kirim') }}">
+                                              @csrf
+                                              <!-- ID pesanan -->
+                                              <input type="hidden" name="id_distribusi" value="{{ $item->distribusi->first()?->id_distribusi }}">
+                                              <x-primary-button>
+                                                  {{ __('kirim') }}
+                                              </x-primary-button>
+                                               </form>
+                                            @endif
                                         </td>
                                     </tr>
                                         @endforeach

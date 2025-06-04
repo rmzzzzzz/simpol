@@ -1,13 +1,14 @@
 @extends('layouts.navigation')
 @section('content')
-@if ($errors->has('error'))
-    <div class="alert alert-danger">
-        {{ $errors->first('error') }}
-    </div>
-@endif
+
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
+    </div>
+@endif
+@if (session('errors'))
+    <div class="alert alert-danger">
+        <strong> {{ session('errors') }}</strong>
     </div>
 @endif
 
@@ -115,9 +116,9 @@
                                             <form method="POST" action="{{ route('setor.lagi') }}">
                                                 @csrf
                                                 <!-- ID pesanan -->
-                                                <input type="" name="pesanan_id" value="{{ $item->id_pesanan }}">
+                                                <input type="hidden" name="pesanan_id" value="{{ $item->id_pesanan }}">
                                                 <!--  nominal -->
-                                                <input type="" name="nominal_uang" value="{{ ceil($item->total / 12) }}">
+                                                <input type="hidden" name="nominal_uang" value="{{ ceil($item->total / $item->bulan) }}">
                                                 <x-primary-button>
                                                     {{ __('Setor') }}
                                                 </x-primary-button>

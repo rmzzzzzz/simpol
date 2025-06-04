@@ -53,7 +53,7 @@ public function hapus($id)
     {
         $kategori = kategoriModel::findOrfail($id);
             if ($kategori->produk()->exists()) {
-        return back()->withErrors(['error' => 'Tidak bisa menghapus kategori karena masih memiliki produk terkait.']);
+        return back()->withErrors(['errors' => 'Tidak bisa menghapus kategori karena masih memiliki produk terkait.']);
     }
         $kategori->delete();
         return back()->with('success', 'data user berhasil dihapus');

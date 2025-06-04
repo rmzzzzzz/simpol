@@ -80,8 +80,9 @@ public function action_edit(Request $request, $id)
 public function hapus($id)
     {
         $produk = produkModel::findOrfail($id);
+        //  dd($produk->pesanan()->exists());
         if ($produk->pesanan()->exists()) {
-        return back()->withErrors(['error' => 'Tidak bisa menghapus kategori karena masih memiliki produk terkait.']);
+        return back()->withErrors(['errors' => 'Tidak bisa menghapus kategori karena masih memiliki pesanan terkait.']);
     }
         $produk->delete();
         return back()->with('success', 'data user berhasil dihapus');

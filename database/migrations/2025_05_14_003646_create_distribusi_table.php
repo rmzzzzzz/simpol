@@ -16,6 +16,7 @@ return new class extends Migration
     $table->unsignedBigInteger('pesanan_id');
     $table->unsignedBigInteger('user_id');
     $table->unsignedBigInteger('anggota_id');
+    $table->string('foto')->nullable();
     $table->enum('status', ['proses','dikirim', 'selesai'])->default('proses');
     $table->timestamps();
 

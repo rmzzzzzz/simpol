@@ -1,10 +1,22 @@
 @extends('layouts.navigation')
+
 @section('content')
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -12,11 +24,11 @@
                     <div class="card-header pb-0">
                         <div class="container">
                             <div class="d-flex mb-4 justify-content-between align-items-center">
-                              <div>
-                                <h6>Produk table</h6>
-                              </div>
+                                <div>
+                                    <h6>Produk Table</h6>
+                                </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -24,44 +36,46 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            no</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            nama</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            produk</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            alamat</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            no.hp</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            jumlah</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            total</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            status</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            aksi</th>
+                                            No
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Nama
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Produk
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Alamat
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            No. HP
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Jumlah
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Total
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Status
+                                        </th>
+                                        {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Bukti
+                                        </th> --}}
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Aksi
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $data as $item)  
-                                    {{-- <pre>{{ dd($item) }}</pre> --}}
+                                    @foreach ($data as $item)
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                            <p class="text-xs font-weight-bold mb-2 ">{{ $loop->iteration }}</p>
-                                        </div>
-                                        </div>
-                                    
+                                                    <p class="text-xs font-weight-bold mb-2">{{ $loop->iteration }}</p>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td>
                                             <div class="d-flex px-2 py-1">
@@ -110,20 +124,25 @@
                                                 </div>
                                             </div>
                                         </td>
-                                           <td class="flex items-center justify-center gap-2">
-                                        
-                                            {{-- @foreach($pesanan as $item) --}}
-                                              <form method="POST" action="{{ route('status.selesai') }}">
+                                        {{-- <td class="flex items-center justify-center gap-2">
+                                            @if ($item->bukti)
+                                                <a href="{{ asset('storage/fotobukti/' . $item->foto) }}" target="_blank" class="btn btn-sm btn-info">Lihat Bukti</a>
+                                            @else
+                                                <span class="text-danger">Belum Upload</span>
+                                            @endif
+                                        </td> --}}
+                                        <td>
+                                            <form method="POST" action="{{ route('status.selesai') }}" enctype="multipart/form-data">
                                                 @csrf
-                                                <!-- ID pesanan -->
                                                 <input type="hidden" name="id_distribusi" value="{{ $item->id_distribusi }}">
+                                                <input type="file" name="foto" class="form-control mb-2" required>
                                                 <x-primary-button>
-                                                    {{ __('kirim') }}
+                                                    {{ __('Kirim') }}
                                                 </x-primary-button>
-                                                 </form>
+                                            </form>
                                         </td>
                                     </tr>
-                                        @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

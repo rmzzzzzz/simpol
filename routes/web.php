@@ -51,6 +51,8 @@ route::get('admin/data/selesai', [adminController::class, 'selesai']);
 Route::get('admin/data/setoran/{id}', [adminController::class, 'riwayat']);
 Route::post('/admin/data/pesanan', [adminController::class, 'update'])->name('status.kirim');
 
+
+
 //  Route::get('/add/user')->name('add.user');
 // route anggota
 // Route::get('anggota/dashboard', function () {
@@ -97,6 +99,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 // Route::get('admin',function(){
 //     return '<h1>helloadmin</h1>';

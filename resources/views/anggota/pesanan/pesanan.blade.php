@@ -39,6 +39,11 @@
         <x-text-input id="jumlah" class="block mt-1 w-full" type="number"
             name="jumlah" required />
     </div>
+   <div class="mt-4">
+        <x-input-label for="bulan" :value="__('Lama Simpanan (Bulan)')" />
+        <x-text-input id="bulan" class="block mt-1 w-full" type="number"
+            name="bulan"  min="1" max="12" />
+    </div>
 
     <!-- Harga -->
     <div class="mt-4">
@@ -53,7 +58,7 @@
         <x-text-input id="total" class="block mt-1 w-full" type="number"
             name="total" readonly />
     </div>
-
+ 
     <!-- Awal Setoran -->
     <div class="mt-4">
         <x-input-label for="awal_setoran" :value="__('Awal Setoran')" />
@@ -72,21 +77,32 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const jumlahInput = document.getElementById('jumlah');
+        const bulanInput = document.getElementById('bulan');
         const hargaInput = document.getElementById('harga');
         const totalInput = document.getElementById('total');
         const awalSetoranInput = document.getElementById('awal_setoran');
 
         function hitung() {
             const jumlah = parseFloat(jumlahInput.value) || 0;
+            const bulan = parseFloat(bulanInput.value) || 0;
             const harga = parseFloat(hargaInput.value) || 0;
             const total = jumlah * harga;
-            const awalSetoran = total / 12;
+            const awalSetoran = total / bulan;
+            
+  if (bulan > 12) {
+        bulan = 12;
+        bulanInput.value = 12;
+    } else if (bulan < 1) {
+        bulan = 1;
+        bulanInput.value = 1;
+    }
 
             totalInput.value = total.toFixed(0);
             awalSetoranInput.value = awalSetoran.toFixed(0);
         }
 
         jumlahInput.addEventListener('input', hitung);
+        bulanInput.addEventListener('input', hitung);
     });
 </script>
 

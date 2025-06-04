@@ -26,7 +26,7 @@ class pesananController extends Controller
            $data['pesanan'] = pesananModel::whereHas('distribusi', function($query) {
                                       $query->where('status', 'proses');
                                   })
-                                  ->with(['produk', 'detail_anggota', 'distribusi'])
+                                  ->with(['produk', 'detail_anggota', 'distribusi', 'setoran_berhasil'])
                                   ->get();
         return view('admin/data/pesanan', $data);
     }
@@ -50,6 +50,7 @@ class pesananController extends Controller
         'id_barang' => ['required', 'integer', 'min:1'],
         'detailanggota_id' => ['required', 'integer', 'min:1'],
         'jumlah' => ['required', 'integer', 'min:1'],
+        'bulan' => ['required', 'integer', 'min:1'],
         'total' => ['required', 'integer'],
         'jumlah_bayar' => ['required', 'integer']
     ]);
@@ -60,6 +61,7 @@ class pesananController extends Controller
             'detail_anggota_id' => $request->detailanggota_id,
             'produk_id' => $request->id_barang,
             'jumlah' => $request->jumlah,
+            'bulan' => $request->bulan,
             // 'tanggal' => now(),
             'total' => $request->total
         ]);
