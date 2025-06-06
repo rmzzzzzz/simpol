@@ -112,7 +112,7 @@
                                             <form method="POST" action="{{ route('status.kirim') }}">
                                               @csrf
                                               <!-- ID pesanan -->
-                                              <input type="hidden" name="id_distribusi" value="{{ $item->distribusi->first()?->id_distribusi }}">
+                                              <input type="hidden" name="id_distribusi" value="{{ $item->distribusi->id_distribusi }}">
                                               <x-primary-button>
                                                   {{ __('kirim') }}
                                               </x-primary-button>

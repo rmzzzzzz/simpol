@@ -90,7 +90,7 @@
                                                     <h6 class="mb-0 text-sm">{{ $item->jumlah }} KG</h6>
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td> 
                                         <td>
                                            <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="mb-0 text-sm">Rp {{ number_format($item->total, 0, ',', '.') }}</h6>

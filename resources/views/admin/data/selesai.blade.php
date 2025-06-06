@@ -110,8 +110,8 @@
                                          <td>
                                         <div class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
-                                                @if ($item->distribusi && $item->distribusi->first()->foto)
-                                                    <a href="{{ asset('storage/' . $item->distribusi->first()->foto) }}" target="_blank" class="btn btn-sm btn-info">Lihat Bukti</a>
+                                                @if ($item->distribusi && $item->distribusi->foto)
+                                                    <a href="{{ asset('storage/' . $item->distribusi->foto) }}" target="_blank" class="btn btn-sm btn-info">Lihat Bukti</a>
                                                 @else
                                                     <span class="text-danger">Belum Upload</span>
                                                 @endif

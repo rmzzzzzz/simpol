@@ -88,21 +88,21 @@
                                         <td>
                                             <div class="align-middle text-center text-sm">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{$item->detail_anggota->pesanan->first()?->jumlah ??'' }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{$item->jumlah ??'' }}</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="align-middle text-center text-sm">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Rp {{ number_format($item->detail_anggota->pesanan->first()?->total,0, ',', '.' ??'')}}</h6>
+                                                    <h6 class="mb-0 text-sm">Rp {{ number_format($item->total,0, ',', '.' ??'')}}</h6>
                                                 </div>
                                             </div>
                                         </td>                      
                                         <td>
                                             <div class="align-middle text-center text-sm">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{$item->distribusi->first()?->status ??''}}</h6>
+                                                    <h6 class="mb-0 text-sm">{{$item->distribusi->status ??''}}</h6>
                                                 </div>
                                             </div>
                                         </td>                      
