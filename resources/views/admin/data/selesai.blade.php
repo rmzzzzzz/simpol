@@ -45,6 +45,9 @@
                                             total</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            petugas</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             aksi</th>
                                     </tr>
                                 </thead>
@@ -99,10 +102,15 @@
                                                 <h6 class="mb-0 text-sm">Rp {{ number_format($item->total, 0, ',', '.') }}</h6>
                                             </div>
                                         </td>
+                                        <td>
+                                           <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm"> {{ $item->distribusi->user->name}}</h6>
+                                            </div>
+                                        </td>
                                          <td>
                                         <div class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
-                                                @if ($item->distribusi->isNotEmpty() && $item->distribusi->first()->foto)
+                                                @if ($item->distribusi && $item->distribusi->first()->foto)
                                                     <a href="{{ asset('storage/' . $item->distribusi->first()->foto) }}" target="_blank" class="btn btn-sm btn-info">Lihat Bukti</a>
                                                 @else
                                                     <span class="text-danger">Belum Upload</span>
