@@ -5,7 +5,10 @@
                       Pembayaran
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title">{{'Rp' . number_format($nominal, 0, ',', '.' ??'') }}</h5>
+                      <h5 class="card-title">{{'Awal :  Rp' . number_format($awal, 0, ',', '.' ??'') }}</h5>
+                      <h5 class="card-title">{{'Telat : '.$telat. ' hari' ??'' }}</h5>
+                      <h5 class="card-title">{{'Denda : Rp' . number_format($denda, 0, ',', '.' ??'') }}</h5>
+                      <h5 class="card-title">{{'Total : Rp' . number_format($nominal, 0, ',', '.' ??'') }}</h5>
                       <p class="card-text">Silahkan segera melakukan pembayaran.</p>
                       {{-- <a href="#" class="btn btn-primary" id="pay-button">bayar sekaraang</a> --}}
                       <button type="button" class="btn btn-primary mt-4" id="pay-button">bayar sekarang</button>

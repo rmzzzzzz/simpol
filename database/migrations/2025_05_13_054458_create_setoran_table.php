@@ -15,6 +15,7 @@ return new class extends Migration
     $table->id('id_setoran');
     $table->unsignedBigInteger('pesanan_id');
     $table->bigInteger('nominal_uang');
+    $table->bigInteger('denda')->nullable();
     $table->string('snap_token')->nullable();
     $table->enum('status', ['proses', 'gagal', 'berhasil'])->default('proses');
     $table->timestamps();

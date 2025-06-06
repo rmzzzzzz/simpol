@@ -35,7 +35,7 @@ if (!is_null($setoran->id)) {
         $jatuhTempo = Carbon::parse($setoranSebelumnya->jatuh_tempo);
 
         if ($tanggalBayar->greaterThan($jatuhTempo)) {
-            $terlambatHari = $jatuhTempo->diffInDays($tanggalBayar);
+            $terlambatHari = (int) $jatuhTempo->diffInDays($tanggalBayar);
             $denda = (int) round($setoran->nominal_uang * 0.01 * $terlambatHari);
         }
     }
@@ -64,10 +64,14 @@ $totalBayar = $setoran->nominal_uang + $denda;
         ];
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-
+        $setoran = setoranModel::findOrFail($id);
         // Update token di database
-        $setoran->snap_token = $snapToken;
+       $setoran->fill([
+                'snap_token' => $snapToken,
+                'denda' => $denda,
+                ]);
         $setoran->save();
+
     } else {
         // Gunakan snap token lama dari database
         $snapToken = $setoran->snap_token;
@@ -76,6 +80,7 @@ $totalBayar = $setoran->nominal_uang + $denda;
         'snapToken' => $snapToken,
         // 'snapToken' =>  $setoran->snap_token,
         'id'        => $setoran->id_setoran,
+        'awal'        => $setoran->nominal_uang,
         'nominal'   => $totalBayar,
         'denda'     => $denda,
         'telat'     => $tanggalBayar->greaterThan($jatuhTempo) ? $terlambatHari : 0
