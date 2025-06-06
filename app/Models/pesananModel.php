@@ -35,7 +35,7 @@ public function setoran_berhasil()
 
     public function distribusi()
 {
-    return $this->hasMany(distribusiModel::class, 'pesanan_id', 'id_pesanan'); 
+    return $this->hasOne(distribusiModel::class, 'pesanan_id', 'id_pesanan'); 
     // Sesuaikan nama primary key pesanan di model pesananModel
 }
 

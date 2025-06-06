@@ -151,7 +151,7 @@ $data = $user->detail_anggota
                 ->whereHas('distribusi', function($query) {
                     $query->where('status', 'selesai');
                 })
-                ->with(['produk', 'distribusi',])
+                ->with(['produk', 'distribusi.user',])
                 ->get()
             : collect();
 return view('/anggota/pesanan/selesai', [
