@@ -43,6 +43,9 @@
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             total</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            petugas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,10 +93,15 @@
                                                     <h6 class="mb-0 text-sm">{{ $item->jumlah }} KG</h6>
                                                 </div>
                                             </div>
-                                        </td> 
+                                        </td>   
                                         <td>
                                            <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="mb-0 text-sm">Rp {{ number_format($item->total, 0, ',', '.') }}</h6>
+                                            </div>
+                                        </td>
+                                         <td>
+                                           <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm"> {{ $item->distribusi->user->name}}</h6>
                                             </div>
                                         </td>
                                     </tr>

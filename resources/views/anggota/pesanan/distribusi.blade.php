@@ -51,6 +51,10 @@
                                             <div class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                            Status</div>
                                         </th>
+                                        <th class="align-middle text-center text-sm">
+                                            <div class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                           petugas</div>
+                                        </th>
                                 </thead>
                                 <tbody>
                                     @foreach ( $data as $item)  
@@ -105,7 +109,14 @@
                                                     <h6 class="mb-0 text-sm">{{$item->distribusi->status ??''}}</h6>
                                                 </div>
                                             </div>
-                                        </td>                      
+                                        </td>   
+                                         <td>
+                                        <div class="align-middle text-center text-sm">
+                                           <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm"> {{ $item->distribusi->user->name}}</h6>
+                                            </div>
+                                        </div>
+                                        </td>                   
                                     </tr>
                                         @endforeach
                                 </tbody>

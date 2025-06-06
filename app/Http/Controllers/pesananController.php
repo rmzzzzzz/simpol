@@ -115,8 +115,13 @@ public function riwayat()
     $anggota = detailAnggotaModel::where('user_id', $user)->first();
     // dd($idAnggota);
     $idAnggota = $anggota->id_anggota ??'';
-    $data['pesanan'] = pesananModel::where('detail_anggota_id', $idAnggota)->get();
-        return view('/anggota/pesanan/riwayat', $data);
+    // $data['pesanan'] = pesananModel::where('detail_anggota_id', $idAnggota)->get();
+     $data['pesanan'] = pesananModel::whereHas('distribusi', function($query) {
+                                      $query->where('status', 'proses');
+                                  })
+                                  ->with(['produk', 'detail_anggota', 'distribusi', 'setoran_berhasil'])
+                                  ->get();    
+    return view('/anggota/pesanan/riwayat', $data);
 }
 
 
